@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react';
+import {useState} from 'react';
 
 const ImageUploader = () => {
     const [image, setImage] = useState<string | null>(null);
@@ -16,7 +16,8 @@ const ImageUploader = () => {
         <div className="flex items-center space-x-8">
             <div className="relative">
                 {!image ? (
-                    <label className="cursor-pointer flex flex-col items-center justify-center h-48 w-48 bg-[#EFE8FF] rounded-xl border-2 border-dashed border-[#633CFF]">
+                    <label
+                        className="cursor-pointer flex flex-col items-center justify-center h-48 w-48 bg-[#EFE8FF] rounded-xl border-2 border-dashed border-[#633CFF]">
                         <input
                             type="file"
                             accept="image/*"
@@ -50,7 +51,8 @@ const ImageUploader = () => {
                             alt="Uploaded"
                             className="h-full w-full object-cover"
                         />
-                        <label className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+                        <label
+                            className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 cursor-pointer">
                             <input
                                 type="file"
                                 accept="image/*"
@@ -71,9 +73,7 @@ const ImageUploader = () => {
                                     d="M12 4.75a4.75 4.75 0 014.75 4.75h3.5a1.75 1.75 0 011.75 1.75v7a1.75 1.75 0 01-1.75 1.75H4.75A1.75 1.75 0 013 18.25v-7A1.75 1.75 0 014.75 9.5h3.5A4.75 4.75 0 0112 4.75z"
                                 />
                             </svg>
-                            <span className="text-white text-sm font-medium ml-2">
-                Change Image
-              </span>
+                            <span className="text-white text-sm font-medium ml-2">Change Image</span>
                         </label>
                     </div>
                 )}

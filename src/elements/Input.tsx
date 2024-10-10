@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react';
-import { FiLink } from 'react-icons/fi'; // Optional, using react-icons for the link icon
+import { FiLink } from 'react-icons/fi';
 
 interface TextFieldProps {
     placeholder: string;
@@ -19,12 +19,16 @@ const TextField = ({ placeholder, state, errorMessage }: TextFieldProps) => {
     let textColor = 'text-gray-500';
     let placeholderColor = 'placeholder-gray-400';
     let iconColor = 'text-gray-400';
+    let boxShadow = '';
+    let cursorColor = 'caret-gray-500';
 
     if (state === 'active') {
         borderColor = 'border-[#633CFF]';
         textColor = 'text-gray-900';
         placeholderColor = 'placeholder-gray-500';
         iconColor = 'text-[#633CFF]';
+        cursorColor = 'caret-[#633CFF]';
+        boxShadow = 'shadow-[0_0_32px_rgba(99,60,225,0.25)]';
     } else if (state === 'filled') {
         textColor = 'text-gray-900';
         placeholderColor = 'placeholder-gray-500';
@@ -32,18 +36,19 @@ const TextField = ({ placeholder, state, errorMessage }: TextFieldProps) => {
         borderColor = 'border-red-500';
         textColor = 'text-red-600';
         iconColor = 'text-red-500';
+        cursorColor = 'caret-red-500';
     }
 
     return (
         <div className="flex flex-col space-y-2">
-            <div className={`relative flex items-center rounded-md border-2 p-2 ${borderColor}`}>
+            <div className={`relative flex items-center rounded-md border-2 p-2 ${borderColor} ${boxShadow}`}>
                 <FiLink className={`w-5 h-5 ${iconColor} mr-2`} />
                 <input
                     type="text"
                     placeholder={placeholder}
                     value={value}
                     onChange={handleChange}
-                    className={`w-full outline-none ${textColor} ${placeholderColor} bg-transparent`}
+                    className={`w-full outline-none ${textColor} ${placeholderColor} ${cursorColor} bg-transparent`}
                 />
             </div>
             {state === 'error' && errorMessage && (

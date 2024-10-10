@@ -5,6 +5,7 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/elements/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -17,7 +18,20 @@ const config: Config = {
         cloudy_silver: "#D9D9D9",
         frost_white: "#FAFAFA",
         pure_white: "#FFFFFF",
-        fiery_red: "#FF3939"
+        fiery_red: "#FF3939",
+        github: "#1A1A1A",
+        frontend_mentor: "#FFFFFF",
+        twitter: "#43B7E9",
+        linkedin: "#2D68FF",
+        youtube: "#EE3939",
+        facebook: "#2442AC",
+        twitch: "#EE3FC8",
+        devto: "#333333",
+        codewars: "#8A1A50",
+        freecodecamp: "#302267",
+        gitlab: "#EB4925",
+        hashnode: "#0330D1",
+        stackoverflow: "#EC7100"
       },
       fontFamily: {
         sans: ['Instrument Sans', 'sans-serif'],

@@ -1,13 +1,21 @@
-import Img from "@/app/components/Img";
-import TextField from "@/app/components/Input";
-import SocialButton from "@/app/components/SocialButton";
+import Img from "@/elements/Img";
+import TextField from "@/elements/Input";
+import SocialButton from "@/elements/SocialButton";
 import { FaGithub, FaTwitter, FaLinkedin, FaYoutube } from 'react-icons/fa';
 
+// internal imports
+import Button from "@/elements/Button";
+import CustomLink from "@/elements/CustomLink";
+import Dropdown from "@/elements/Dropdown";
+import Login from "@/app/login/page";
+import SignUp from "@/app/sign-up/page";
+import ProfileCard from "@/components/ProfileCard";
+import PhoneMockup from "@/components/PhoneMockup";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <div className="">
+        <main className="flex flex-wrap gap-8 row-start-2 items-center sm:items-start p-10">
             <div>
                 <Img/>
             </div>
@@ -50,10 +58,43 @@ export default function Home() {
                     color="#FF0000"
                 />
             </div>
-        </main>
-        <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center bg-amber-300 h-10 w-full">
 
-        </footer>
+            <div className="bg-gray-50 flex flex-col items-center justify-center space-y-4">
+                {/* Primary Buttons */}
+                <div className="flex space-x-10 border">
+                    <Button title="Button" buttonType="primary"/>
+                    <Button title="Button" buttonType="primary" isActive/>
+                    <Button title="Button" buttonType="primary" isDisabled/>
+                </div>
+                {/* Secondary Buttons */}
+                <div className="flex space-x-4">
+                    <Button title="Button" buttonType="secondary"/>
+                    <Button title="Button" buttonType="secondary" isActive/>
+                    <Button title="Button" buttonType="secondary" isDisabled/>
+                </div>
+            </div>
+            <div className="bg-gray-50 flex space-x-10 items-center justify-center space-y-4">
+                {/* Active Link */}
+                <CustomLink title="Active" isActive/>
+                {/* Default Link */}
+                <CustomLink title="Default"/>
+                {/* Hover Link (simply hover over it to see the effect) */}
+                <CustomLink title="Hover"/>
+            </div>
+            <div className="bg-gray-50 flex items-center justify-center">
+                <Dropdown/>
+            </div>
+            <div className="flex border min-w-screen justify-center items-center py-10">
+                <Login/>
+                <SignUp/>
+            </div>
+            <div>
+                <ProfileCard />
+            </div>
+            <div>
+                <PhoneMockup/>
+            </div>
+        </main>
     </div>
   );
 }
