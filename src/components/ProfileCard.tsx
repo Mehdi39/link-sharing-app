@@ -9,6 +9,7 @@ import IconYoutube from "@/assets/images/IconYoutube";
 import IconLinkedin from "@/assets/images/IconLinkedin";
 import avatar from "@/assets/images/img_1.png"
 import SocialButton from "@/elements/SocialButton";
+import HeadingM from "@/elements/Text/HeadingM";
 
 const ProfileCard: React.FC = () => {
     return (
@@ -22,7 +23,7 @@ const ProfileCard: React.FC = () => {
 
                     {/* Name and Email */}
                     <div className="space-y-2">
-                        <h2 className="text-heading-m font-bold text-charcoal_black">Ben Wright</h2>
+                        <HeadingM text="Ben Wright" />
                         <p className="text-graphite_gray text-body-m">ben@example.com</p>
                     </div>
                 </div>

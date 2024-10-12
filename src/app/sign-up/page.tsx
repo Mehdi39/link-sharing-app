@@ -6,6 +6,7 @@ import Image from 'next/image'
 import logo from '../../assets/images/logo-devlinks-large.svg'
 import IconMail from "@/assets/images/IconMail";
 import IconPassword from "@/assets/images/IconPassword";
+import HeadingM from "@/elements/Text/HeadingM";
 
 const SignUp = () => {
     return (
@@ -17,7 +18,7 @@ const SignUp = () => {
             </div>
             <div className="w-full max-w-md p-10 bg-white rounded-xl">
                 <div className="pb-10">
-                    <h1 className="text-heading-m font-bold text-charcoal_black">Create account</h1>
+                    <HeadingM text="Create account" />
                     <p className="mt-2 text-graphite_gray text-body-m">
                         Let’s get you started sharing your links!
                     </p>

@@ -5,9 +5,8 @@ import Image from 'next/image'
 // internal imports
 import illustraionEmpty from '../assets/images/illustration-empty.svg'
 import HeadingM from "@/elements/Text/HeadingM";
-import BodyM from "@/elements/Text/BodyM";
 
-const LinksHome: React.FC = () => {
+const ProfileDetails: React.FC = () => {
     const [links, setLinks] = React.useState([])
 
     const handleAddNewLink = () => {
@@ -22,8 +21,10 @@ const LinksHome: React.FC = () => {
             <div className="border-b p-10 space-y-10">
                 {/* Title */}
                 <div className="space-y-2">
-                    <HeadingM text="Customize your links" />
-                    <BodyM text="Add/edit/remove links below and then share all your profiles with the world!"/>
+                    <HeadingM text="Profile Details" />
+                    <p className="text-graphite_gray text-body-m">
+                        Add your details to create a personal touch to your profiles
+                    </p>
                 </div>
                 <div className="w-full space-y-6">
                     {/* Add new link button */}
@@ -65,4 +66,4 @@ const LinksHome: React.FC = () => {
     );
 };
 
-export default LinksHome;
+export default ProfileDetails;

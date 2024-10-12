@@ -19,5 +19,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/', '/home', '/login'], // Add paths that should be protected
+    matcher: ['/', '/home'], // Add paths that should be protected
 };

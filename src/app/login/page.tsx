@@ -5,11 +5,12 @@ import { useState } from 'react';
 // internal imports
 import Link from 'next/link';
 import Image from 'next/image'
-
-// internal imports
 import logo from '../../assets/images/logo-devlinks-large.svg'
 import IconMail from "@/assets/images/IconMail";
 import IconPassword from "@/assets/images/IconPassword";
+import HeadingS from "@/elements/Text/HeadingS";
+import HeadingM from "@/elements/Text/HeadingM";
+import BodyM from "@/elements/Text/BodyM";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -49,10 +50,8 @@ const Login = () => {
             </div>
             <div className="w-full max-w-md p-10 bg-white rounded-xl">
                 <div className="pb-10">
-                    <h1 className="text-heading-m font-bold text-charcoal_black">Login</h1>
-                    <p className="mt-2 text-graphite_gray text-body-m">
-                        Add your details below to get back into the app
-                    </p>
+                    <HeadingM text="Login" />
+                    <BodyM text="Add your details below to get back into the app" classnames="mt-2"/>
                 </div>
 
                 {/* Form */}
@@ -106,9 +105,9 @@ const Login = () => {
                     <div>
                         <button
                             type="submit"
-                            className="w-full py-2 px-4 bg-electric_indigo hover:bg-purple-700 text-white text-heading-s font-semibold rounded-md shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+                            className="w-full py-[11px] px-4 bg-electric_indigo hover:bg-purple-700 text-white text-heading-s font-semibold rounded-md shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
                         >
-                            Login
+                           <HeadingS text="Login" classnames="text-white"/>
                         </button>
                     </div>
                 </form>
