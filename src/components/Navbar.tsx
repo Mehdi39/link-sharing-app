@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
                     <span className={`hidden md:block ${pathname === '/' ? 'bg-soft_lilac text-electric_indigo' : ''}`}>Links</span>
                 </Link>
                 <Link
-                    href="/sign-up"
+                    href="/home"
                     className={`flex items-center space-x-2 text-graphite_gray px-[27px] py-[11px] rounded-lg  
                                 ${pathname === '/home' ? 'bg-soft_lilac text-electric_indigo' +
                         ' text-purple-600' : ''}`}

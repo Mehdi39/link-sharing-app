@@ -1,44 +1,53 @@
 import React from 'react';
 import Image from 'next/image'
 
+// internal imports
+import illustraionEmpty from '../assets/images/illustration-empty.svg'
+
 const CustomizeLinks: React.FC = () => {
     return (
-        <div className="min-h-screen flex flex-col items-center bg-gray-50 p-8">
-            <div className="max-w-3xl w-full bg-white rounded-xl shadow-lg p-8 space-y-6">
+        <div className="w-full bg-white">
+            <div className="border-b p-10 space-y-10">
                 {/* Title */}
-                <h1 className="text-3xl font-bold text-gray-800">Customize your links</h1>
-                <p className="text-gray-600">
-                    Add/edit/remove links below and then share all your profiles with the world!
-                </p>
-
-                {/* Add new link button */}
-                <div className="flex justify-center">
-                    <button className="border border-purple-600 text-purple-600 px-6 py-3 rounded-lg hover:bg-purple-50 transition duration-300">
-                        + Add new link
-                    </button>
-                </div>
-
-                {/* Illustration */}
-                <div className="flex flex-col items-center justify-center py-12">
-                    {/* Replace this image with the correct illustration */}
-                    <Image
-                        src="/illustration-placeholder.png" // Replace with your own illustration path
-                        alt="Get Started Illustration"
-                        className="w-48 h-48"
-                    />
-                    <h2 className="mt-8 text-xl font-bold text-gray-800">Let’s get you started</h2>
-                    <p className="text-gray-600 text-center mt-2 max-w-lg">
-                        Use the “Add new link” button to get started. Once you have more than one link, you can
-                        reorder and edit them. We’re here to help you share your profiles with everyone!
+                <div className="space-y-2">
+                    <h2 className="text-heading-m font-bold text-charcoal_black">Customize your links</h2>
+                    <p className="text-graphite_gray text-body-m">
+                        Add/edit/remove links below and then share all your profiles with the world!
                     </p>
                 </div>
-
-                {/* Save Button */}
-                <div className="flex justify-end">
-                    <button className="px-6 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition duration-300">
-                        Save
+                <div className="w-full space-y-6">
+                    {/* Add new link button */}
+                    <button
+                        className="w-full border border-electric_indigo text-electric_indigo py-[11px] rounded-lg hover:bg-soft_lilac transition duration-300">
+                        + Add new link
                     </button>
+                    {/* Illustration */}
+                    <div className="flex flex-col gap-10 items-center justify-center px-5 py-[62.5px] rounded-lg bg-frost_white">
+                        <Image
+                            src={illustraionEmpty}
+                            alt="Get Started Illustration"
+                            className="w-48 h-48"
+                            width={249.53}
+                            height={160}
+                        />
+                        <div className="text-center space-y-6 max-w-[488px]">
+                            <h2 className="text-heading-m font-bold text-charcoal_black">Let’s get you started</h2>
+                            <p className="text-body-m text-graphite_gray text-center max-w-lg">
+                                Use the “Add new link” button to get started. Once you have more than one link, you
+                                can
+                                reorder and edit them. We’re here to help you share your profiles with everyone!
+                            </p>
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+            {/* Save Button */}
+            <div className="flex justify-end pe-10 py-6">
+                <button
+                    className="px-6 py-3 bg-lavender_mist text-white text-heading-s rounded-lg hover:bg-purple-600 transition duration-300">
+                    Save
+                </button>
             </div>
         </div>
     );
