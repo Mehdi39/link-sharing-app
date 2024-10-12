@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import Navbar from "@/components/Navbar";
+import "./globals.css"
+import { UsersProvider } from "@/context/UserContext";
+
 
 export const metadata: Metadata = {
   title: "link-sharing app",
@@ -17,8 +18,9 @@ export default function RootLayout({
       <body
         className={` antialiased bg-frost_white`}
       >
-      <Navbar />
-        {children}
+      <UsersProvider>
+          {children}
+      </UsersProvider>
       </body>
     </html>
   );

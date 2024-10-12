@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import Image from 'next/image'
 
@@ -5,8 +6,17 @@ import Image from 'next/image'
 import illustraionEmpty from '../assets/images/illustration-empty.svg'
 
 const CustomizeLinks: React.FC = () => {
+    const [links, setLinks] = React.useState([])
+
+    const handleAddNewLink = () => {
+        setLinks([...links, ])
+    }
+
+    const handleSaveBtn = () => {
+        console.log('Links saved')
+    }
     return (
-        <div className="w-full bg-white">
+        <div className="bg-white">
             <div className="border-b p-10 space-y-10">
                 {/* Title */}
                 <div className="space-y-2">
@@ -18,6 +28,7 @@ const CustomizeLinks: React.FC = () => {
                 <div className="w-full space-y-6">
                     {/* Add new link button */}
                     <button
+                        onClick={() => handleAddNewLink()}
                         className="w-full border border-electric_indigo text-electric_indigo py-[11px] rounded-lg hover:bg-soft_lilac transition duration-300">
                         + Add new link
                     </button>
@@ -43,9 +54,10 @@ const CustomizeLinks: React.FC = () => {
             </div>
 
             {/* Save Button */}
-            <div className="flex justify-end pe-10 py-6">
+            <div className="flex justify-end md:pe-10 md:py-6 px-4 py-4">
                 <button
-                    className="px-6 py-3 bg-lavender_mist text-white text-heading-s rounded-lg hover:bg-purple-600 transition duration-300">
+                    onClick={() => handleSaveBtn()}
+                    className="w-full md:w-auto px-6 py-3 bg-lavender_mist text-white text-heading-s rounded-lg hover:bg-purple-600 transition duration-300">
                     Save
                 </button>
             </div>
