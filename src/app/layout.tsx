@@ -1,15 +1,9 @@
 "use client"
-// import type { Metadata } from "next";
 import "./globals.css"
-import { usePathname} from "next/navigation";
-import { UsersProvider } from "@/context/UserContext";
+import {usePathname} from "next/navigation";
+import {UsersProvider} from "@/context/UserContext";
 import Navbar from "@/components/Navbar";
-
-
-// export const metadata: Metadata = {
-//   title: "link-sharing app",
-//   description: "share your link",
-// };
+import {LinksProvider} from "@/context/LinkContext";
 
 export default function RootLayout({
   children,
@@ -17,16 +11,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-    const pathname = usePathname();
-    const showNavbar = !['/login', '/signup'].includes(pathname)
+    const pathname = usePathname(); // Get the current path
+    const showNavbar = !['/login', '/signup'].includes(pathname) // Conditionally show Navbar
   return (
     <html lang="en">
       <body
         className={` antialiased bg-frost_white`}
       >
+      {/* Wrapping the app with UsersProvider and LinksProvider */}
       <UsersProvider>
-          {showNavbar && <Navbar/>}
-          {children}
+          <LinksProvider>
+              {showNavbar && <Navbar/>}
+              {children}
+          </LinksProvider>
       </UsersProvider>
       </body>
     </html>

@@ -1,18 +1,16 @@
 "use client"
 import React from 'react';
-import Image from 'next/image'
 
 // internal imports
-import illustraionEmpty from '../assets/images/illustration-empty.svg'
 import HeadingM from "@/elements/Text/HeadingM";
 import BodyM from "@/elements/Text/BodyM";
+import LinkItem from "@/components/LinkItem";
+import EmptyLinks from "@/components/EmptyLinks";
+import { useLinks } from "@/context/LinkContext";
+import LinkItemTwo from "@/components/LinkItemTwo";
 
 const LinksHome: React.FC = () => {
-    const [links, setLinks] = React.useState([])
-
-    const handleAddNewLink = () => {
-        setLinks([...links, ])
-    }
+    const { links, addLink } = useLinks()
 
     const handleSaveBtn = () => {
         console.log('Links saved')
@@ -28,27 +26,19 @@ const LinksHome: React.FC = () => {
                 <div className="w-full space-y-6">
                     {/* Add new link button */}
                     <button
-                        onClick={() => handleAddNewLink()}
+                        onClick={() => addLink("Github", " ", Date.now())}
+                        disabled={links.length === 5}
                         className="w-full border border-electric_indigo text-electric_indigo py-[11px] rounded-lg hover:bg-soft_lilac transition duration-300">
                         + Add new link
                     </button>
                     {/* Illustration */}
-                    <div className="flex flex-col gap-10 items-center justify-center px-5 py-[62.5px] rounded-lg bg-frost_white">
-                        <Image
-                            src={illustraionEmpty}
-                            alt="Get Started Illustration"
-                            className="w-48 h-48"
-                            width={249.53}
-                            height={160}
-                        />
-                        <div className="text-center space-y-6 max-w-[488px]">
-                            <HeadingM text="Let’s get you started" />
-                            <p className="text-body-m text-graphite_gray text-center max-w-lg">
-                                Use the “Add new link” button to get started. Once you have more than one link, you
-                                can
-                                reorder and edit them. We’re here to help you share your profiles with everyone!
-                            </p>
-                        </div>
+                    <div className="space-y-6">
+                        {links.length < 1 && <EmptyLinks/>}
+                        {
+                            links.map((link, index) => (
+                                <LinkItemTwo link={link} number={index + 1} index={index} />
+                            ))
+                        }
                     </div>
                 </div>
             </div>

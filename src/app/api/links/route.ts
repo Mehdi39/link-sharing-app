@@ -10,7 +10,7 @@ export async function GET() {
     } catch (error) {
         return NextResponse.json({
             error: "Failed to fetch links",
-            message: error.message,
+            message: `Failed to get Links becasue of ${error.message}`,
         })
     }
 }
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
         const savedPost = await newLink.save();
         return NextResponse.json(savedPost, {status: 201});
     } catch (error) {
-        return NextResponse.json({ error: `Failed to create post becasue of ${error.message}` }, { status: 500 }
+        return NextResponse.json({ error: `Failed to create Link becasue of ${error.message}` }, { status: 500 }
         );
     }
 }

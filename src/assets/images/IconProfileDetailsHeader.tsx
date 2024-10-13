@@ -1,7 +1,7 @@
-const ProfileIcon = ({color = "#737373"}) => {
+const IconProfileDetailsHeader = ({color = '#ffffff'}) => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg"
-             width="20"
+             width="21"
              height="20"
              fill="none"
              viewBox="0 0 21 20">
@@ -13,4 +13,4 @@ const ProfileIcon = ({color = "#737373"}) => {
     )
 }
 
-export default ProfileIcon
+export default IconProfileDetailsHeader;

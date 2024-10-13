@@ -26,7 +26,7 @@ const Dropdown: React.FC = () => {
     };
 
     return (
-        <div className="relative w-64">
+        <div className="relative w-full">
             {/* Dropdown Field */}
             <button
                 onClick={toggleDropdown}

@@ -3,3 +3,18 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&display=swap');
+
+/* For WebKit browsers (Chrome, Safari) */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* For Firefox */
+.hide-scrollbar {
+    scrollbar-width: none;
+}
+
+/* For Internet Explorer and Edge */
+.hide-scrollbar {
+    -ms-overflow-style: none;
+}
