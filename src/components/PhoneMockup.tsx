@@ -1,16 +1,15 @@
 // components/PhoneMockup.tsx
 import React from 'react';
 import Image from 'next/image';
-import { FiGithub, FiArrowRight } from 'react-icons/fi';
 
 // internal imports
 import illustrationPhoneMockup from "@/assets/images/illustration-phone-mockup.svg"
 import SocialButton from "@/elements/SocialButton";
-import IconGithub from "@/assets/images/IconGithub";
 import IconYoutube from "@/assets/images/IconYoutube";
-import IconLinkedin from "@/assets/images/IconLinkedin";
+import {useLinks} from "@/context/LinkContext";
 
 const PhoneMockup: React.FC = () => {
+    const { links } = useLinks()
     return (
         <div className="flex items-center justify-center">
             {/* Phone mockup container */}
@@ -32,9 +31,9 @@ const PhoneMockup: React.FC = () => {
 
                     {/* Button */}
                     <div className="w-full mt-[44px] space-y-3">
-                        <SocialButton icon={<IconGithub/>} buttonTitle="GitHub" color="bg-github" size="small"/>
-                        <SocialButton icon={<IconYoutube/>} buttonTitle="Youtube" color="bg-youtube" size="small"/>
-                        <SocialButton icon={<IconLinkedin/>} buttonTitle="LinkedIn" color="bg-linkedin" size="small"/>
+                        {links.map((link, index) => (
+                            <SocialButton icon={<IconYoutube/>} buttonTitle={link.name} color="bg-youtube" size="small"/>
+                        ))}
                     </div>
                 </div>
             </div>

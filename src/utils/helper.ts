@@ -49,21 +49,21 @@ export function getCorrespondingLogoCom(name: string, size?: string) {
 }
 
 export function getBgColor(name: string) {
-    if (name === "Github") return "bg-[#1a1a1a] text-white";
+    if (name === "Github") return "bg-github text-white";
     if (name === "Frontend Mentor")
         return "bg-white border border-solid border-[#d9d9d9] text-[#333]";
-    if (name === "Twitter") return "bg-[#43b7e9] text-white";
-    if (name === "LinkedIn") return "bg-[#2d68ff] text-white";
-    if (name === "YouTube") return "bg-[#ee3939] text-white";
-    if (name === "Facebook") return "bg-[#2442ac] text-white";
-    if (name === "Dev.to") return "bg-[#333] text-white";
-    if (name === "Codewars") return "bg-[#ba1a50] text-white";
-    if (name === "freeCodeCamp") return "bg-[#302267] text-white";
-    if (name === "Gitlab") return "bg-[#eb4925] text-white";
-    if (name === "Hashnode") return "bg-[#0330d1] text-white";
-    if (name === "StackOverflow") return "bg-[#ec7100] text-white";
-    if (name === "Twitch") return "bg-[#ee3fc8] text-white";
-    if (name === "Codepen") return "bg-[#464646] text-white";
+    if (name === "Twitter") return "bg-twitter text-white";
+    if (name === "LinkedIn") return "bg-linkedin text-white";
+    if (name === "YouTube") return "bg-youtube text-white";
+    if (name === "Facebook") return "bg-facebook text-white";
+    if (name === "Dev.to") return "bg-devto text-white";
+    if (name === "Codewars") return "bg-codewars text-white";
+    if (name === "freeCodeCamp") return "bg-freecodecamp text-white";
+    if (name === "Gitlab") return "bg-gitlab text-white";
+    if (name === "Hashnode") return "bg-hashnode text-white";
+    if (name === "StackOverflow") return "bg-stackoverflow text-white";
+    if (name === "Twitch") return "bg-twitch text-white";
+    if (name === "Codepen") return "bg-codepen text-white";
 }
 
 export function getRightProfileUrl(name: string) {

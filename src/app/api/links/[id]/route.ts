@@ -1,19 +1,29 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/db";
 import ModelLink from "@/models/ModelLink";
+import mongoose from "mongoose";
 
-// PATCH: Update a link
+// PATCH: Update a link by custom `id` (Number)
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
     try {
         await connectDB();
         const body = await req.json();
-        const updatedLink = await ModelLink.findByIdAndUpdate(params.id, body, {
-            new: true,
-            runValidators: true,
+
+        // Ensure the `id` is a valid number (since your `id` is defined as a Number in the schema)
+        const idAsNumber = parseInt(params.id, 10);
+        if (isNaN(idAsNumber)) {
+            return NextResponse.json({ error: "Invalid ID format (expected a number)" }, { status: 400 });
+        }
+
+        const updatedLink = await ModelLink.findOneAndUpdate({ id: idAsNumber }, body, {
+            new: true, // Return the updated document
+            runValidators: true, // Ensure validation rules are applied
         });
+
         if (!updatedLink) {
             return NextResponse.json({ error: "Link not found" }, { status: 404 });
         }
+
         return NextResponse.json(updatedLink);
     } catch (error) {
         return NextResponse.json(
