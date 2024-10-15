@@ -3,7 +3,7 @@
 import React, { useEffect, useState, MouseEvent, ChangeEvent } from "react";
 import LinkPlatformItems from "./LinkPlatformItems";
 import { LinkProps, useLinks } from "@/context/LinkContext";
-import { getCorrespondingLogo, getRightProfileUrl } from "@/utils/helper";
+import {getCorrespondingLogo, getCorrespondingLogoCom, getRightProfileUrl} from "@/utils/helper";
 
 // Internal imports
 import IconGithub from "@/assets/images/IconGithub";
@@ -26,24 +26,23 @@ import HeadingS from "@/elements/Text/HeadingS";
 import IconLink from "@/assets/images/IconLink";
 import BodyM from "@/elements/Text/BodyM";
 import BodyS from "@/elements/Text/BodyS";
-import {FiLink} from "react-icons/fi";
 
 // List of available social platforms
 const socialPlatforms = [
-    { name: "Github", icon: <IconGithub/>, url: "https://github.com/" },
-    { name: "Dev.to", icon: <IconDevto/>, url: "https://dev.to/" },
-    { name: "Frontend Mentor", icon: <IconFrontendMentor/>, url: "https://www.frontendmentor.io/profile/" },
-    { name: "Codewars", icon: <IconCodewars/>, url: "https://www.codewars.com/users/" },
-    { name: "Gitlab", icon: <IconGitlab/>, url: "https://gitlab.com/" },
-    { name: "Hashnode", icon: <IconHashnode/>, url: "https://hashnode.com/@" },
-    { name: "Twitter", icon: <IconTwitter/>, url: "https://twitter.com/" },
-    { name: "LinkedIn", icon: <IconLinkedin/>, url: "https://www.linkedin.com/in/" },
-    { name: "YouTube", icon: <IconYoutube/>, url: "https://www.youtube.com/@" },
-    { name: "Facebook", icon: <IconFacebook/>, url: "https://www.facebook.com/" },
-    { name: "Twitch", icon: <IconTwitch/>, url: "https://www.twitch.tv/" },
-    { name: "Codepen", icon: <IconCodepen/>, url: "https://codepen.io/" },
-    { name: "freeCodeCamp", icon: <IconFreeCodeCamp/>, url: "https://www.freecodecamp.org/news/author" },
-    { name: "StackOverflow", icon: <IconStackOverflow/>, url: "https://stackoverflow.com/users/" },
+    { name: "Github", icon: <IconGithub  color="#737373"/>, url: "https://github.com/" },
+    { name: "Dev.to", icon: <IconDevto color="#737373"/>, url: "https://dev.to/" },
+    { name: "Frontend Mentor", icon: <IconFrontendMentor color="#737373"/>, url: "https://www.frontendmentor.io/profile/" },
+    { name: "Codewars", icon: <IconCodewars color="#737373"/>, url: "https://www.codewars.com/users/" },
+    { name: "Gitlab", icon: <IconGitlab color="#737373"/>, url: "https://gitlab.com/" },
+    { name: "Hashnode", icon: <IconHashnode color="#737373"/>, url: "https://hashnode.com/@" },
+    { name: "Twitter", icon: <IconTwitter color="#737373"/>, url: "https://twitter.com/" },
+    { name: "LinkedIn", icon: <IconLinkedin color="#737373"/>, url: "https://www.linkedin.com/in/" },
+    { name: "YouTube", icon: <IconYoutube color="#737373"/>, url: "https://www.youtube.com/@" },
+    { name: "Facebook", icon: <IconFacebook color="#737373"/>, url: "https://www.facebook.com/" },
+    { name: "Twitch", icon: <IconTwitch color="#737373"/>, url: "https://www.twitch.tv/" },
+    { name: "Codepen", icon: <IconCodepen color="#737373"/>, url: "https://codepen.io/" },
+    { name: "freeCodeCamp", icon: <IconFreeCodeCamp color="#737373"/>, url: "https://www.freecodecamp.org/news/author" },
+    { name: "StackOverflow", icon: <IconStackOverflow color="#737373"/>, url: "https://stackoverflow.com/users/" },
 ];
 
 interface LinkItemsProps {
@@ -51,10 +50,11 @@ interface LinkItemsProps {
     number: number;
     index: number;
     isCreating: boolean;
+    _id: string;
 }
 
 // Refactored LinkItems component without framer-motion
-const LinkItems: React.FC<LinkItemsProps> = ({ link, number, index, isCreating }) => {
+const LinkItems: React.FC<LinkItemsProps> = ({ link, number, index, isCreating, _id }) => {
     const { updateLink, deleteLink } = useLinks();
     const [links, setLinks] = useState(link.name);
     const [isLinkBoxOpen, setIsLinkBoxOpen] = useState(false);
@@ -87,7 +87,7 @@ const LinkItems: React.FC<LinkItemsProps> = ({ link, number, index, isCreating }
                     <IconDragAndDrop color="#737373"/>
                     <HeadingS text="Link #">{number}</HeadingS>
                 </div>
-                <button onClick={() => deleteLink(index)} className="text-gray-500 hover:text-gray-700">
+                <button onClick={() => deleteLink(link._id)} className="text-gray-500 hover:text-gray-700">
                     <BodyM text="Remove"/>
                 </button>
             </div>
@@ -97,12 +97,12 @@ const LinkItems: React.FC<LinkItemsProps> = ({ link, number, index, isCreating }
                     {/* Platform Dropdown */}
                     <div className="space-y-1">
                         <label htmlFor="platform">
-                            <BodyS text="Platform" />
+                            <BodyS text="Platform"/>
                         </label>
                         <div className="relative">
                             <button
                                 type="button"
-                                className="flex w-full items-center gap-5 rounded-lg border border-solid border-cloudy_silver bg-white px-4 py-2 text-[1.6rem] leading-[2.4rem] text-[#333] caret-[#633cff] outline-none focus:border-[#633cff] focus:shadow-purple-sh"
+                                className="flex w-full items-center gap-[14px] rounded-lg border border-solid border-cloudy_silver bg-white px-4 py-2 text-[1.6rem] outline-none focus:border-[#633cff] focus:shadow-purple-sh"
                                 onClick={handlePlatformChange}
                             >
                                 {getCorrespondingLogo(link.name)}
@@ -114,7 +114,7 @@ const LinkItems: React.FC<LinkItemsProps> = ({ link, number, index, isCreating }
                                     {socialPlatforms.map((platform) => (
                                         <LinkPlatformItems
                                             key={platform.name}
-                                            index={index}
+                                            index={link._id}
                                             name={platform.name}
                                             icon={platform.icon}
                                             setLinks={setLinks}
@@ -131,17 +131,17 @@ const LinkItems: React.FC<LinkItemsProps> = ({ link, number, index, isCreating }
                     {/* Link Input */}
                     <div className="space-y-1">
                         <label htmlFor="link">
-                            <BodyS text="Link"/>
+                            <BodyS text="Link" classnames=""/>
                         </label>
-                        <div className="relative flex items-start">
-                            <div className="absolute left-[2.5%] top-[40%]"><IconLink/></div>
+                        <div className="relative">
+                            <div className="absolute left-[2.2%] top-[32%]"><IconLink/></div>
                             <input
                                 type="text"
                                 placeholder="e.g. https://www.github.com/johnappleseed"
                                 id="link"
                                 value={linkUrl}
                                 onChange={handleUpdateLinkUrl}
-                                className="w-full rounded-[0.8rem] border border-solid border-[#d9d9d9] bg-white py-3 pl-[40px] text-body-m leading-[2.4rem] text-[#333] caret-[#633cff] outline-none focus:border-[#633cff] focus:shadow-purple-sh disabled:cursor-not-allowed disabled:bg-[#ccc]"
+                                className="w-full rounded-lg border border-solid border-[#d9d9d9] bg-white py-2 pl-[38px] text-body-m text-graphite_gray outline-none focus:border-[#633cff] focus:shadow-purple-sh disabled:cursor-not-allowed disabled:bg-[#ccc]"
                                 disabled={isCreating}
                             />
                         </div>

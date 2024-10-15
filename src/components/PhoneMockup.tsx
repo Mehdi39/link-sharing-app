@@ -1,5 +1,6 @@
+"use client"
 // components/PhoneMockup.tsx
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Image from 'next/image';
 
 // internal imports
@@ -7,9 +8,17 @@ import illustrationPhoneMockup from "@/assets/images/illustration-phone-mockup.s
 import SocialButton from "@/elements/SocialButton";
 import IconYoutube from "@/assets/images/IconYoutube";
 import {useLinks} from "@/context/LinkContext";
+import {getBgColor, getCorrespondingLogo, getCorrespondingLogoCom} from "@/utils/helper";
 
 const PhoneMockup: React.FC = () => {
     const { links } = useLinks()
+
+    const [Links, setLinks] = useState<object>(links)
+
+    useEffect(() => {
+        setLinks(links)
+    }, [links]);
+
     return (
         <div className="flex items-center justify-center">
             {/* Phone mockup container */}
@@ -31,8 +40,8 @@ const PhoneMockup: React.FC = () => {
 
                     {/* Button */}
                     <div className="w-full mt-[44px] space-y-3">
-                        {links.map((link, index) => (
-                            <SocialButton icon={<IconYoutube/>} buttonTitle={link.name} color="bg-youtube" size="small"/>
+                        {Links.map((link, index) => (
+                            <SocialButton icon={getCorrespondingLogo(link.name, "#fff")} buttonTitle={link.name} classnames={getBgColor(link.name)} size="small"/>
                         ))}
                     </div>
                 </div>

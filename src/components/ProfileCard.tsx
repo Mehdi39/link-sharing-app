@@ -13,7 +13,7 @@ import HeadingM from "@/elements/Text/HeadingM";
 
 const ProfileCard: React.FC = () => {
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-50 min-w-[349px]">
+        <div className="flex items-center justify-center min-w-[349px]">
             <div className="bg-white shadow-[0_0_32px_rgba(0,0,0,0.10)] rounded-3xl px-14 py-12 max-w-md w-full text-center">
                 <div className="flex flex-col gap-[25px]">
                     {/* Profile Image */}

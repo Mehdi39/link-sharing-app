@@ -10,6 +10,7 @@ import logo from '../assets/images/logo-devlinks-large.svg'
 import logoSm from '../assets/images/logo-devlinks-small.svg'
 import ProfileIcon from "@/assets/images/ProfileIcon";
 import LinkIcon from "@/assets/images/LinkIcon";
+import BodyM from "@/elements/Text/BodyM";
 
 const Navbar: React.FC = () => {
     const pathname = usePathname();
@@ -32,22 +33,23 @@ const Navbar: React.FC = () => {
                     <span className={`hidden md:block ${pathname === '/' ? 'bg-soft_lilac text-electric_indigo' : ''}`}>Links</span>
                 </Link>
                 <Link
-                    href="/home"
+                    href="/profile"
                     className={`flex items-center space-x-2 text-graphite_gray px-[27px] py-[11px] rounded-lg  
-                                ${pathname === '/home' ? 'bg-soft_lilac text-electric_indigo' +
+                                ${pathname === '/profile' ? 'bg-soft_lilac text-electric_indigo' +
                         ' text-purple-600' : ''}`}
                 >
-                    <ProfileIcon color={pathname === '/home' ? '#633CFF' : '#737373'}/>
-                    <span className={`hidden md:block ${pathname === '/home' ? 'bg-soft_lilac text-electric_indigo' : ''}`}>Profile Details</span>
+                    <ProfileIcon color={pathname === '/profile' ? '#633CFF' : '#737373'}/>
+                    <span className={`hidden md:block ${pathname === '/profile' ? 'bg-soft_lilac text-electric_indigo' : ''}`}>Profile Details</span>
                 </Link>
             </div>
 
-            <div>
-                <button
+            <div className="flex gap-3">
+                <Link
+                    href="/preview"
                     className="flex items-center md:px-[27px] px-4 py-[11px] border border-purple-600 text-purple-600 rounded-lg hover:bg-purple-50 transition duration-300">
                     <FiEye className="w-5 h-5 md:hidden"/>
                     <span className="hidden md:block">Preview</span>
-                </button>
+                </Link>
             </div>
         </nav>
     );

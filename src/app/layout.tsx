@@ -12,11 +12,11 @@ export default function RootLayout({
 }>) {
 
     const pathname = usePathname(); // Get the current path
-    const showNavbar = !['/login', '/signup'].includes(pathname) // Conditionally show Navbar
+    const showNavbar = !['/login', '/sign-up', '/preview'].includes(pathname) // Conditionally show Navbar
   return (
     <html lang="en">
       <body
-        className={` antialiased bg-frost_white`}
+        className={`antialiased bg-frost_white`}
       >
       {/* Wrapping the app with UsersProvider and LinksProvider */}
       <UsersProvider>

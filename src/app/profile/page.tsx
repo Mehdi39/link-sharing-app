@@ -1,22 +1,11 @@
-"use client"
-import {useEffect, useState} from "react";
-import {useUserContext} from "@/context/UserContext";
+import Input from "@/elements/Input";
+import Dropdown from "@/elements/Dropdown";
 import PhoneMockup from "@/components/PhoneMockup";
 import LinksHome from "@/components/LinksHome";
-import CustomLink from "@/elements/CustomLink";
-import SocialButton from "@/elements/SocialButton";
+import ProfileDetails from "@/components/ProfileDetails";
 
-export default function Home() {
-    const [links, setLinks] = useState([])
-    const {isAuthenticated} = useUserContext();
 
-    useEffect(() => {
-        fetch("/api/links")
-            .then((res) => res.json())
-            .then((data) => setLinks(data))
-            .catch((err) => console.error(err));
-    }, [isAuthenticated]);
-
+const Home = () => {
     return (
         <div>
             <main className="">
@@ -25,10 +14,12 @@ export default function Home() {
                         <PhoneMockup/>
                     </div>
                     <div className="w-full lg:max-w-[808px] bg-pure_white">
-                        <LinksHome/>
+                        <ProfileDetails />
                     </div>
                 </section>
             </main>
         </div>
-    );
+    )
 }
+
+export default Home;

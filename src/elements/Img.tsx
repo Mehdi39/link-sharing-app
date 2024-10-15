@@ -1,7 +1,7 @@
 "use client"
 import {useState} from 'react';
 
-const ImageUploader = () => {
+const ImageUploader = ({on}) => {
     const [image, setImage] = useState<string | null>(null);
 
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -78,13 +78,13 @@ const ImageUploader = () => {
                     </div>
                 )}
             </div>
-            <div>
+            {on && (<div>
                 {image ? (
                     <p className="text-gray-900 font-medium">Image Uploaded</p>
                 ) : (
                     <p className="text-gray-500">Image Not Uploaded</p>
                 )}
-            </div>
+            </div>)}
         </div>
     );
 };

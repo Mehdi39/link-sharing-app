@@ -10,7 +10,7 @@ import HeadingM from "@/elements/Text/HeadingM";
 
 const SignUp = () => {
     return (
-        <div className="flex flex-col gap-[51px] items-center justify-center bg-gray-50 pt-[206px]">
+        <div className="flex flex-col gap-[51px] items-center justify-center bg-gray-50 lg:pt-[138px] md:pt-[158px]">
             <div className="flex flex-col items-center min-w-[476px]">
                 <div className="flex items-center justify-center rounded-full">
                     <Image src={logo} alt="link-sharing-app-logo"/>

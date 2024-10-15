@@ -7,18 +7,28 @@ import mongoose from "mongoose";
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
     try {
         await connectDB();
-        const body = await req.json();
 
-        // Ensure the `id` is a valid number (since your `id` is defined as a Number in the schema)
-        const idAsNumber = parseInt(params.id, 10);
-        if (isNaN(idAsNumber)) {
-            return NextResponse.json({ error: "Invalid ID format (expected a number)" }, { status: 400 });
+        console.log("Valid ID: ",mongoose.Types.ObjectId.isValid(params.id))
+        // Check if the ID is valid
+        if (!mongoose.Types.ObjectId.isValid(params.id)) {
+            return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
         }
 
-        const updatedLink = await ModelLink.findOneAndUpdate({ id: idAsNumber }, body, {
-            new: true, // Return the updated document
-            runValidators: true, // Ensure validation rules are applied
-        });
+        const body = await req.json();
+
+        console.log("Body: ",body)
+        const link = await ModelLink.findById({ _id: params.id })
+        console.log("findById: ", link)
+
+        // Find and update the link by `_id`
+        const updatedLink = await ModelLink.findByIdAndUpdate(
+            { _id: params.id }, // Correctly query using the `_id`
+            body,
+            {
+                new: true, // Return the updated document
+                runValidators: true, // Ensure validation rules are applied
+            }
+        );
 
         if (!updatedLink) {
             return NextResponse.json({ error: "Link not found" }, { status: 404 });
@@ -37,10 +47,18 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
 export async function DELETE(req: Request, { params }: { params: { id: string } }) {
     try {
         await connectDB();
+
+        // Convert the id from string to ObjectId
+        if (!mongoose.Types.ObjectId.isValid(params.id)) {
+            return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
+        }
+
         const deletedLink = await ModelLink.findByIdAndDelete(params.id);
+
         if (!deletedLink) {
             return NextResponse.json({ error: "Link not found" }, { status: 404 });
         }
+
         return NextResponse.json({ message: "Link deleted successfully" });
     } catch (error) {
         return NextResponse.json(

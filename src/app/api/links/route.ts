@@ -6,6 +6,7 @@ export async function GET() {
     try {
         await connectDB();
         const links = await ModelLink.find({});
+        console.log("Links from API: ",NextResponse.json(links))
         return NextResponse.json(links);
     } catch (error) {
         return NextResponse.json({

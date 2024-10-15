@@ -13,7 +13,7 @@ type LinksState = {
     links: LinkProps[];
     addLink: (name: string, link: string) => Promise<void>;
     updateLink: (id: number, updatedFields: Partial<LinkProps>) => Promise<void>;
-    deleteLink: (id: number) => Promise<void>;
+    deleteLink: (id: string) => Promise<void>;
     setLinks: React.Dispatch<React.SetStateAction<LinkProps[]>>;
 };
 
@@ -51,7 +51,7 @@ function LinksProvider({ children }: { children: React.ReactNode }) {
     };
 
     // Update a link by calling a PATCH/PUT API
-    const updateLink = async (id: number, updatedFields: Partial<LinkProps>) => {
+    const updateLink = async (id: string, updatedFields: Partial<LinkProps>) => {
         try {
             const res = await fetch(`/api/links/${id}`, {
                 method: 'PATCH',
@@ -64,7 +64,7 @@ function LinksProvider({ children }: { children: React.ReactNode }) {
                 prevLinks.map((link) => (link.id === id ? updatedLink : link))
             );
         } catch (error) {
-            console.error("Error updating link:", error);
+            console.error(`Error updating link because of ${error.message}`);
         }
     };
 
@@ -75,9 +75,13 @@ function LinksProvider({ children }: { children: React.ReactNode }) {
                 method: 'DELETE',
             });
             if (!res.ok) throw new Error('Failed to delete link');
-            setLinks((prevLinks) => prevLinks.filter((link) => link.id !== id));
+            // if (res.ok) {
+            //     // Remove the link from the local state
+            //     setLinks((prevLinks) => prevLinks.filter((link) => link._id !== id));
+            // }
+            setLinks((prevLinks) => prevLinks.filter((link) => link._id !== id));
         } catch (error) {
-            console.error("Error deleting link:", error);
+            console.error(`Error deleting link because of ${error.message}`);
         }
     };
 

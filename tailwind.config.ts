@@ -6,6 +6,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/elements/**/*.{js,ts,jsx,tsx,mdx}",
+      "./src/utils/**/*.{js,ts,jsx,tsx,md}"
   ],
   theme: {
     extend: {
@@ -20,7 +21,6 @@ const config: Config = {
         pure_white: "#FFFFFF",
         fiery_red: "#FF3939",
         github: "#1A1A1A",
-        frontend_mentor: "#FFFFFF",
         twitter: "#43B7E9",
         linkedin: "#2D68FF",
         youtube: "#EE3939",

@@ -6,7 +6,7 @@ type LinkProps = {
     name: string;
     links: string;
     icon: JSX.Element;
-    index: number;
+    index?: number| object | any;
     setLinks: React.Dispatch<React.SetStateAction<string>>;
     setIsLinkBoxOpen: React.Dispatch<React.SetStateAction<boolean>>;
     setLinkUrl: React.Dispatch<React.SetStateAction<string>>;

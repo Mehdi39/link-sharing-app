@@ -35,7 +35,7 @@ test('renders the page with links', async () => {
 
     // Ensure the mock components are rendered
     expect(screen.getByTestId('phone-mockup')).toBeDefined();
-    expect(screen.getByTestId('links-home')).toBeDefined();
+    expect(screen.getByTestId('links-profile')).toBeDefined();
     expect(screen.getByTestId('navbar')).toBeDefined();
 
     // Check if the fetched data (links) is rendered
